@@ -31,7 +31,7 @@ export async function initSearch(opts = {}) {
 
         suggestionsEl.hidden = false;
         suggestionsEl.innerHTML = visibleItems.map((it, idx) => {
-            const thumb = it.File ? 'memes/' + encodeURIComponent(it.File) : '';
+            const thumb = it.File ? 'https://sriharshabammidi.github.io/meme-images/images/' + encodeURIComponent(it.File) : '';
             return `
         <div class="suggestion-item" role="option" data-index="${idx}" data-name="${escapeHtml(it.Name || '')}">
           <img src="${escapeHtml(thumb)}" alt="${escapeHtml(it.Name || '')} thumbnail" onerror="this.style.display='none'">
