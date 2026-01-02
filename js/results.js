@@ -17,7 +17,7 @@ export async function renderResultsRoute({ q = null, id = null } = {}) {
 
     if (id) {
         const decoded = decodeURIComponent(id);
-        const item = data.find(it => (it.File === decoded) || (it.Name === decoded) || (encodeURIComponent(it.File) === id));
+        const item = data.find(it => (it.Id === decoded) || (encodeURIComponent(it.Id) === id) || (it.File === decoded) || (it.Name === decoded) || (encodeURIComponent(it.File) === id));
         if (item) { renderSingle(item, root); }
         else { root.innerHTML = '<div class="empty">Item not found</div>' }
         return;
@@ -32,7 +32,7 @@ export async function renderResultsRoute({ q = null, id = null } = {}) {
         const name = (it.Name || '').toLowerCase();
         const kws = (it.Keywords || []).map(k => String(k).toLowerCase());
         if (name.includes(ql) || kws.some(k => k.includes(ql))) {
-            if (!seen.has(it.File)) { results.push(it); seen.add(it.File); }
+            if (!seen.has(it.Id)) { results.push(it); seen.add(it.Id); }
         }
     }
     renderGrid(results, q, root);
@@ -120,7 +120,7 @@ export async function renderResultsRoute({ q = null, id = null } = {}) {
         }
 
         mount.innerHTML = `<div class="container">${header}<h1>Results${q ? ' for "' + escapeHtml(q) + '"' : ''}</h1><div class="grid">${items.map(it => `
-      <a class="card" href="?id=${encodeURIComponent(it.File || '')}" title="${escapeHtml(it.Name || '')}">
+      <a class="card" href="?id=${encodeURIComponent(it.Id || it.File || '')}" title="${escapeHtml(it.Name || '')}">
         <img src="${escapeHtml('memes/' + encodeURIComponent(it.File || ''))}" alt="${escapeHtml(it.Name || '')}">
         <div class="name">${escapeHtml(it.Name || '')}</div>
       </a>`).join('')}</div></div>`;

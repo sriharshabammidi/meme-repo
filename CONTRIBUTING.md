@@ -12,18 +12,20 @@ The metadata is a JSON array of objects. Each object should have at minimum thes
 
 ```json
 {
+  "Id": "01234567-89ab-cdef-0123-456789abcdef",
   "Name": "Funny Cat",
   "File": "funny-cat.gif",
   "Keywords": ["cat", "funny", "meme"]
 }
 ```
 
+- `Id` (string): Required GUID identifier for the item (e.g., `01234567-89ab-cdef-0123-456789abcdef`). Must be unique.
 - `Name` (string): Display name for the meme.
 - `File` (string): Filename under `memes/` referencing the image file.
 - `Keywords` (array of strings): Terms used by the search engine for matching.
 - You may add optional fields (e.g., `Source`, `Description`) but they are ignored by the simple client-side search.
 
-After updating `meta-data.json`, ensure it stays valid JSON (no trailing commas) and that the `File` entry exactly matches the filename in `memes/`.
+After updating `meta-data.json`, ensure it stays valid JSON (no trailing commas), that the `File` entry exactly matches the filename in `memes/`, and that the `Id` is present and unique.
 
 ## Code contributions
 Contributions to application code (features, bugfixes, accessibility improvements) are very welcome.

@@ -98,7 +98,7 @@ export async function initSearch(opts = {}) {
 
     function updateFocus(items) { items.forEach((el, i) => el.setAttribute('aria-selected', i === focused ? 'true' : 'false')); const el = items[focused]; if (el) el.scrollIntoView({ block: 'nearest' }); }
 
-    function selectSuggestion(it) { const id = encodeURIComponent(it.File || it.Name || ''); if (!id) return; navigate({ id }); }
+    function selectSuggestion(it) { const id = encodeURIComponent(it.Id || it.File || it.Name || ''); if (!id) return; navigate({ id }); }
 
     // Submit handling
     form.addEventListener('submit', (e) => {
