@@ -3,7 +3,7 @@
 Thanks for considering contributing! This file explains where to add memes and how to update the metadata, plus how to request removal if you own the content.
 
 ## Adding memes
-- Put image files under the `memes/` directory. Supported types: `.gif`, `.png`, `.jpg`, `.jpeg`, `.webp`.
+- Put image files under the `images/` directory in [meme-images repo](https://github.com/sriharshabammidi/meme-images). Supported types: `.gif`, `.png`, `.jpg`, `.jpeg`, `.webp`.
 - Prefer short filenames without spaces (e.g., `funny-cat.gif`).
 - Commit the image file and add an entry to `meta-data.json` describing the item.
 
@@ -21,11 +21,11 @@ The metadata is a JSON array of objects. Each object should have at minimum thes
 
 - `Id` (string): Required GUID identifier for the item (e.g., `01234567-89ab-cdef-0123-456789abcdef`). Must be unique.
 - `Name` (string): Display name for the meme.
-- `File` (string): Filename under `memes/` referencing the image file.
+- `File` (string): Filename under `images/` directory in [meme-images repo](https://github.com/sriharshabammidi/meme-images) referencing the image file.
 - `Keywords` (array of strings): Terms used by the search engine for matching.
 - You may add optional fields (e.g., `Source`, `Description`) but they are ignored by the simple client-side search.
 
-After updating `meta-data.json`, ensure it stays valid JSON (no trailing commas), that the `File` entry exactly matches the filename in `memes/`, and that the `Id` is present and unique.
+After updating `meta-data.json`, ensure it stays valid JSON (no trailing commas), that the `File` entry exactly matches the filename in `images/` directory in [meme-images repo](https://github.com/sriharshabammidi/meme-images), and that the `Id` is present and unique.
 
 ## Code contributions
 Contributions to application code (features, bugfixes, accessibility improvements) are very welcome.

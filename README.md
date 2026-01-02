@@ -8,7 +8,7 @@ This project provides a lightweight, static demo of a searchable meme gallery. I
 - `index.html` — search screen with live suggestions and theming.
 - `results.html` — results view (now redirected to the single-page app at `index.html`).
 - `meta-data.json` — metadata (Name, Keywords, File) used for search and suggestions.
-- `memes/` — directory containing the image files referenced by the metadata.
+- `images/` directory in [meme-images repo](https://github.com/sriharshabammidi/meme-images) — directory containing the image files referenced by the metadata.
 
 The site is intended for local testing, demos, and as an example for building simple static search UIs; it is not a hosting service for copyrighted material.
 
