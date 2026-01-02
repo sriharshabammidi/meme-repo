@@ -1,5 +1,6 @@
 import { escapeHtml, debounce, fetchMeta } from './utils.js';
 import { navigate } from './router.js';
+import { CONFIG } from './config.js';
 
 export async function initSearch(opts = {}) {
     const inputId = opts.inputId || 'q';
@@ -31,7 +32,7 @@ export async function initSearch(opts = {}) {
 
         suggestionsEl.hidden = false;
         suggestionsEl.innerHTML = visibleItems.map((it, idx) => {
-            const thumb = it.File ? 'https://sriharshabammidi.github.io/meme-images/images/' + encodeURIComponent(it.File) : '';
+            const thumb = it.File ? CONFIG.MEME_BASE_URL + encodeURIComponent(it.File) : '';
             return `
         <div class="suggestion-item" role="option" data-index="${idx}" data-name="${escapeHtml(it.Name || '')}">
           <img src="${escapeHtml(thumb)}" alt="${escapeHtml(it.Name || '')} thumbnail" onerror="this.style.display='none'">

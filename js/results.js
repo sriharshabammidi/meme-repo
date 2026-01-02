@@ -1,4 +1,5 @@
-import { escapeHtml, fetchMeta, getParams } from './utils.js';
+import { CONFIG } from './config.js';
+import { escapeHtml, fetchMeta } from './utils.js';
 
 export async function renderResultsRoute({ q = null, id = null } = {}) {
     // Ensure we render inside the SPA mount point
@@ -56,7 +57,7 @@ export async function renderResultsRoute({ q = null, id = null } = {}) {
         <div class="single">
           <h1>${escapeHtml(item.Name || '')}</h1>
           <div class="image-wrap">
-            <img id="singleImage" src="${escapeHtml('https://sriharshabammidi.github.io/meme-images/images/' + encodeURIComponent(item.File || ''))}" alt="${escapeHtml(item.Name || '')}">
+            <img id="singleImage" src="${escapeHtml(CONFIG.MEME_BASE_URL + encodeURIComponent(item.File || ''))}" alt="${escapeHtml(item.Name || '')}">
             <div class="image-actions">
               <button id="downloadBtn" class="action-btn" aria-label="Download image" title="Download">⬇</button>
             </div>
@@ -121,7 +122,7 @@ export async function renderResultsRoute({ q = null, id = null } = {}) {
 
         mount.innerHTML = `<div class="container">${header}<h1>Results${q ? ' for "' + escapeHtml(q) + '"' : ''}</h1><div class="grid">${items.map(it => `
       <a class="card" href="?id=${encodeURIComponent(it.Id || it.File || '')}" title="${escapeHtml(it.Name || '')}">
-        <img src="${escapeHtml('https://sriharshabammidi.github.io/meme-images/images/' + encodeURIComponent(it.File || ''))}" alt="${escapeHtml(it.Name || '')}">
+        <img src="${escapeHtml(CONFIG.MEME_BASE_URL + encodeURIComponent(it.File || ''))}" alt="${escapeHtml(it.Name || '')}">
         <div class="name">${escapeHtml(it.Name || '')}</div>
       </a>`).join('')}</div></div>`;
 
