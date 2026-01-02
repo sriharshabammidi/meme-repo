@@ -8,7 +8,7 @@ assignees: []
 
 **File path / identification**
 
-Please state the exact file path (e.g., `memes/example.gif`) or the `Id` GUID from `meta-data.json`, or provide a clear description of the content you want removed:
+Please state the exact file path (e.g., `images/example.gif`) or the `Id` GUID from `meta-data.json`, or provide a clear description of the content you want removed:
 
 ```
 Path / Id: 

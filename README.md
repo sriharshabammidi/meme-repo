@@ -8,7 +8,7 @@ This project provides a lightweight, static demo of a searchable meme gallery. I
 - `index.html` — search screen with live suggestions and theming.
 - `results.html` — results view (now redirected to the single-page app at `index.html`).
 - `meta-data.json` — metadata (Name, Keywords, File) used for search and suggestions.
-- `images/` directory in [meme-images repo](https://github.com/sriharshabammidi/meme-images) — directory containing the image files referenced by the metadata.
+- `images/` directory in [meme-images repository](https://github.com/sriharshabammidi/meme-images) — directory containing the image files referenced by the metadata.
 
 The site is intended for local testing, demos, and as an example for building simple static search UIs; it is not a hosting service for copyrighted material.
 
@@ -21,9 +21,9 @@ python -m http.server 8000
 ```
 
 ## Disclaimer & Removal Policy
-None of the memes or media in this repository are claimed as being owned by the project maintainers. If you believe you own the copyright to an item in this repository and would like it removed, please open an issue on this repository with the following information:
+None of the memes or media in this repository or [meme-images repository](https://github.com/sriharshabammidi/meme-images) are claimed as being owned by the project maintainers. If you believe you own the copyright to an item in this repository and would like it removed, please open an issue on this repository with the following information:
 
-- The file path of the meme (e.g., `memes/example.gif`) or a clear description identifying the content.
+- The file path of the meme (e.g., `images/example.gif`) or a clear description identifying the content.
 - Proof of ownership (for example a link to the original source or other documentation).
 
 Once provided, we will review the request and remove the content promptly if appropriate.
