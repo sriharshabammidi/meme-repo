@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Meme Repo - Search</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="search-card" role="region" aria-label="Search memes">
+        <div class="logo">Meme Repository</div>
+        <form id="searchForm" action="#" method="get">
+            <label for="q" class="sr-only">Search</label>
+            <div class="search-wrap">
+                <input id="q" name="q" type="search" placeholder="Search memes..." autocomplete="off" required>
+                <button type="submit" class="search-btn">Search</button>
+                <div class="suggestions" id="suggestions" role="listbox" aria-label="Suggestions" hidden></div>
+            </div>
+        </form>
+    </div>
+
+    <!-- SPA mount point for results -->
+    <div id="app-root" hidden></div>
+
+    <button id="themeToggle" class="theme-toggle" aria-pressed="false" title="Toggle theme">☾</button>
+
+    <script type="module" src="js/main-index.js"></script>
+
+</body>
+
+</html>

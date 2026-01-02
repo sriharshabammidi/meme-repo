@@ -1,0 +1,461 @@
+/* Shared styles for Meme Repo (index + results) */
+:root {
+    --bg: linear-gradient(135deg, #0b0b0b 0%, #141414 100%);
+    --card: rgba(255, 255, 255, 0.04);
+    --accent: rgba(255, 255, 255, 0.12);
+    --text: #e6e6e6;
+    --border: rgba(255, 255, 255, 0.10);
+    --suggest-bg: rgba(0, 0, 0, 0.95);
+    --tag-bg: rgba(255, 255, 255, 0.06);
+    --tag-border: rgba(255, 255, 255, 0.04);
+    --hover: rgba(255, 255, 255, 0.06);
+    --focus: rgba(230, 230, 230, 0.16);
+    --btn-text: #ffffff;
+}
+
+/* Light theme overrides */
+[data-theme="light"] {
+    --bg: #ffffff;
+    --card: #f7f7f7;
+    --accent: rgba(0, 0, 0, 0.12);
+    --text: #0a0a0a;
+    --border: rgba(0, 0, 0, 0.14);
+    --suggest-bg: #ffffff;
+    --tag-bg: rgba(0, 0, 0, 0.06);
+    --tag-border: rgba(0, 0, 0, 0.08);
+    --hover: rgba(0, 0, 0, 0.06);
+    --focus: rgba(0, 0, 0, 0.14);
+    --btn-text: #000000;
+}
+
+html,
+body {
+    height: 100%;
+    transition: background .25s ease, color .25s ease;
+    margin: 0;
+    font-family: system-ui, Segoe UI, Roboto, 'Helvetica Neue', Arial
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    color: var(--text)
+}
+
+/* For the results page we want normal flow and full height */
+body.page-results {
+    display: block;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* Generic components */
+.search-card,
+.suggestions,
+.tag,
+.card,
+.tags {
+    transition: background .15s ease, color .15s ease
+}
+
+/* Search card */
+.search-card {
+    width: clamp(320px, 40vw, 720px);
+    padding: 32px;
+    border-radius: 12px;
+    background: var(--card);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+    text-align: center;
+    position: relative
+}
+
+.theme-toggle {
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    z-index: 1200;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--btn-text);
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.theme-toggle:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px var(--focus);
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    letter-spacing: .6px
+}
+
+form {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center
+}
+
+input[type="search"] {
+    flex: 1;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    font-size: 1rem;
+    outline: none;
+    margin: 15px
+}
+
+button {
+    padding: 13px 16px;
+    border-radius: 8px;
+    border: none;
+    background: var(--accent);
+    color: var(--btn-text);
+    font-weight: 600;
+    cursor: pointer
+}
+
+button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px var(--focus);
+}
+
+button:hover {
+    filter: brightness(.95)
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0
+}
+
+/* Suggestions dropdown */
+.search-wrap {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px
+}
+
+.suggestions {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 8px);
+    background: var(--suggest-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    max-height: 320px;
+    overflow: auto;
+    z-index: 100;
+    padding: 6px
+}
+
+.suggestion-item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--text)
+}
+
+.suggestion-item img {
+    width: 72px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 6px;
+    background: #000;
+    flex: 0 0 auto
+}
+
+.suggestion-text {
+    font-size: .95rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.suggestion-item:hover,
+.suggestion-item[aria-selected="true"] {
+    background: var(--hover)
+}
+
+@media (max-width:420px) {
+    .suggestion-item img {
+        width: 56px;
+        height: 40px
+    }
+
+    form {
+        flex-direction: column
+    }
+
+    button {
+        width: 100%
+    }
+}
+
+/* Results page styles */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 18px
+}
+
+.top {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 18px
+}
+
+.back {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: var(--text);
+    text-decoration: none;
+    border: 1px solid var(--border)
+}
+
+.search-inline {
+    display: flex;
+    flex: 1;
+    gap: 8px
+}
+
+.search-inline input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text)
+}
+
+.search-inline button {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    background: var(--accent);
+    color: var(--btn-text);
+    font-weight: 600
+}
+
+h1 {
+    margin: 8px 0 18px 0
+}
+
+/* Single image view (stacked) */
+.single {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 18px
+}
+
+.single h1 {
+    margin: 0;
+    font-size: 1.4rem
+}
+
+/* image container to support action overlays */
+.image-wrap {
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+}
+
+.single img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    background: #000
+}
+
+/* action buttons shown over the image in the top-right */
+.image-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 8px;
+    z-index: 30
+}
+
+.action-btn {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 40px;
+    height: 40px
+}
+
+.action-btn:hover {
+    background: var(--hover)
+}
+
+.action-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px var(--focus)
+}
+
+/* small status label for copy/download feedback */
+.action-status {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 6px 8px;
+    border-radius: 6px;
+    color: var(--text);
+    font-size: .85rem;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity .16s ease, transform .16s ease
+}
+
+.action-status.show {
+    opacity: 1;
+    transform: translateY(0)
+}
+
+.meta {
+    max-width: 720px;
+    width: 100%;
+    text-align: center
+}
+
+.meta p {
+    margin: 6px 0;
+    color: rgba(230, 230, 230, 0.8)
+}
+
+.tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 6px
+}
+
+.tag {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: var(--tag-bg);
+    color: var(--text);
+    text-decoration: none;
+    font-size: .9rem;
+    border: 1px solid var(--tag-border)
+}
+
+.tag:hover {
+    background: var(--hover)
+}
+
+/* Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px
+}
+
+.card {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid transparent
+}
+
+.card:hover {
+    background: var(--hover);
+    border-color: var(--border)
+}
+
+.card img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 6px;
+    background: #000
+}
+
+.card .name {
+    font-size: .95rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    color: var(--text);
+    text-decoration: none
+}
+
+.empty {
+    padding: 32px;
+    text-align: center;
+    color: rgba(230, 230, 230, 0.75)
+}
+
+@media (max-width:520px) {
+    .single {
+        flex-direction: column
+    }
+
+    .single img {
+        max-width: 100%
+    }
+}
