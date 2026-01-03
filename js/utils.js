@@ -1,9 +1,10 @@
-// Shared utilities for Meme Repo
+import { CONFIG } from './config.js';
+
 let _metaCache = null;
 
 export async function fetchMeta() {
     if (_metaCache) return _metaCache;
-    const resp = await fetch('meta-data.json');
+    const resp = await fetch(CONFIG.MEME_BASE_URL + CONFIG.METADATA_FILENAME);
     if (!resp.ok) throw new Error('Failed to fetch meta-data.json: ' + resp.status);
     _metaCache = await resp.json();
     return _metaCache;

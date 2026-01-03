@@ -32,7 +32,7 @@ export async function initSearch(opts = {}) {
 
         suggestionsEl.hidden = false;
         suggestionsEl.innerHTML = visibleItems.map((it, idx) => {
-            const thumb = it.File ? CONFIG.MEME_BASE_URL + encodeURIComponent(it.File) : '';
+            const thumb = it.File ? CONFIG.MEME_BASE_URL + CONFIG.IMAGE_DIRECTORY + encodeURIComponent(it.File) : '';
             return `
         <div class="suggestion-item" role="option" data-index="${idx}" data-name="${escapeHtml(it.Name || '')}">
           <img src="${escapeHtml(thumb)}" alt="${escapeHtml(it.Name || '')} thumbnail" onerror="this.style.display='none'">
